@@ -1,6 +1,6 @@
 name: Java and docker build
 
-on: workflow_dispatch
+on: push
 
 jobs:
   build:
