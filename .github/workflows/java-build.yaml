@@ -56,14 +56,14 @@ jobs:
         path: ./target/
         
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
+      uses: docker/setup-buildx-action@v4
     - name: configure aws credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
         role-to-assume: arn:aws:iam::430118834478:role/Gh-aws-access
         aws-region: ${{ env.AWS_REGION }}
     - name: Log in to Docker Hub
-      uses: docker/login-action@v3
+      uses: docker/login-action@v4
       with:
         registry: ${{ env.ART_URL }}
 
