@@ -40,11 +40,11 @@ jobs:
     
     runs-on: ubuntu-latest
     needs: [ build ]
-    if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip docker]') }}
+    # if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip docker]') }}
     env:
       ART_URL: 430118834478.dkr.ecr.ap-southeast-1.amazonaws.com
       REPO: apswara-app
-      AWS_REGION : "ap-southeast-1"
+      AWS_REGION : ap-southeast-1
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -63,7 +63,7 @@ jobs:
         role-to-assume: arn:aws:iam::430118834478:role/Gh-aws-access
         aws-region: ${{ env.AWS_REGION }}
     - name: Log in to Docker Hub
-      uses: docker/login-action@v4
+      uses: docker/login-action@v3
       with:
         registry: ${{ env.ART_URL }}
 
